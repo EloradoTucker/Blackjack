@@ -138,6 +138,7 @@
     }
 
     function placebet() {
+        dealerhand = [];
         bet = Number(document.getElementById("bet").value);
         document.getElementById("placebet").disabled = true;
         document.getElementById("yourbet").innerHTML = "Your bet: $" + bet;
@@ -203,6 +204,7 @@
         if (dealerpoints > 21) {
             money += bet;
             refresh('Dealer Busted!', true);
+            return;
         }
         if (dealerpoints == 21) {
             money -= bet;
@@ -212,7 +214,7 @@
     }
     function stand() {
         document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
-        while (calculateTotalPoints(dealerhand) < 17) {
+        while (dealerpoints < 17) {
             dealerhit()
         }
         dealerpoints = calculateTotalPoints(dealerhand);
