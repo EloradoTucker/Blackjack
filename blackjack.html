@@ -156,7 +156,7 @@
             return;
         }
         if (calculateTotalPoints(dealerhand) == 21) {
-            document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card
+            document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
             refresh('Dealer Wins!', true);
             return;
         }
@@ -185,9 +185,9 @@
     function hit() {
         document.getElementById("double").disabled = true;
         drawCard(yourhand);
-        document.getElementById('yourhand').innerHTML += yourhand[yourhand.length - 1].card
+        document.getElementById('yourhand').innerHTML += yourhand[yourhand.length - 1].card;
         if (calculateTotalPoints(yourhand) > 21) {
-            document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card
+            document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
             money -= bet;
             refresh('You Busted!', true);
         }
@@ -199,7 +199,7 @@
 
     function dealerhit() {
         drawCard(dealerhand);
-        document.getElementById('dealerhand').innerHTML += dealerhand[dealerhand.length - 1].card
+        document.getElementById('dealerhand').innerHTML += dealerhand[dealerhand.length - 1].card;
         dealerpoints = calculateTotalPoints(dealerhand);
         if (dealerpoints > 21) {
             money += bet;
@@ -215,9 +215,9 @@
     function stand() {
         document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
         while (dealerpoints < 17) {
-            dealerhit()
+            dealerhit();
+            dealerpoints = calculateTotalPoints(dealerhand);
         }
-        dealerpoints = calculateTotalPoints(dealerhand);
         if (dealerpoints > 21) {
             return;
         }
