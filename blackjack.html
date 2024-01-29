@@ -139,6 +139,7 @@
 
     function placebet() {
         dealerhand = [];
+        dealerpoints = 0;
         bet = Number(document.getElementById("bet").value);
         document.getElementById("placebet").disabled = true;
         document.getElementById("yourbet").innerHTML = "Your bet: $" + bet;
