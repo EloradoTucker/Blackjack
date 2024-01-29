@@ -194,7 +194,7 @@
             refresh('You Busted!', true);
         }
         if (calculateTotalPoints(yourhand) == 21) {
-            money += bet;
+            money += Math.round(bet * 1.5) ;
             refresh('You Win!', true);
         }
     }
