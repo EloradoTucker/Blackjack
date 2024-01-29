@@ -205,7 +205,10 @@
         drawCard(dealerhand);
         document.getElementById("yourhand").innerHTML = yourhand[0].card + yourhand[1].card;
         document.getElementById("dealerhand").innerHTML = "🂠 " + dealerhand[0].card;
-
+        if (calculateTotalPoints(yourhand) == 21 && calculateTotalPoints(dealerhand) == 21) {
+            document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
+            refresh('Draw!', true);
+            return;
         if (calculateTotalPoints(yourhand) == 21) {
             money += bet;
             refresh('You Win!', true);
@@ -213,6 +216,7 @@
         }
         if (calculateTotalPoints(dealerhand) == 21) {
             document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
+            money -= bet;
             refresh('Dealer Wins!', true);
             return;
         }
