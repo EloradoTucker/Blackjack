@@ -209,6 +209,7 @@
             document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
             refresh('Draw!', true);
             return;
+        }
         if (calculateTotalPoints(yourhand) == 21) {
             money += bet;
             refresh('You Win!', true);
