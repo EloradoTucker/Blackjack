@@ -275,6 +275,7 @@
     }
     function stand() {
         document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
+        dealerpoints = calculateTotalPoints(dealerhand);
         while (dealerpoints < 17) {
             dealerhit();
             dealerpoints = calculateTotalPoints(dealerhand);
