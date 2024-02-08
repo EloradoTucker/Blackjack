@@ -15,16 +15,16 @@
         color: yellow;
     }
 
-    #placebet {
+    #placeBet {
         color: red;
     }
 
-    #yourhand {
+    #yourHand {
         font-size: 100px;
         margin: 0;
     }
 
-    #dealerhand {
+    #dealerHand {
         font-size: 100px;
         margin: 0;
     }
@@ -46,18 +46,18 @@
     <label> How much would you like to bet? <br> $
         <input type="number" id="bet" />
     </label>
-    <button id="placebet">
+    <button id="placeBet">
         Place Bet
     </button>
-    <p id="yourbet"></p>
+    <p id="yourBet"></p>
     <label>
         Your Hand:
     </label>
-    <p id="yourhand"></p> <br>
+    <p id="yourHand"></p> <br>
     <label>
         Dealer's Hand
     </label>
-    <p id="dealerhand"></p> <br> <br>
+    <p id="dealerHand"></p> <br> <br>
     <button id="hit" onClick="hit();">
         Hit
     </button>
@@ -71,16 +71,16 @@
 
 <script>
     let money = 1000;
-    let yourhand = [];
-    let dealerhand = [];
+    let yourHand = [];
+    let dealerHand = [];
     let bet = 0;
-    let dealerpoints = 0;
-    document.getElementById("placebet").disabled = false;
+    let dealerPoints = 0;
+    document.getElementById("placeBet").disabled = false;
     document.getElementById("hit").disabled = true;
     document.getElementById("stand").disabled = true;
     document.getElementById("double").disabled = true;
     document.getElementById("money").innerHTML = money;
-    document.getElementById("placebet").addEventListener("click", drawcards);
+    document.getElementById("placeBet").addEventListener("click", drawCards);
     let deck = [
         { card: '🂡 ', point: 1, additionalpoint: 10 },
         { card: '🃑 ', point: 1, additionalpoint: 10 },
@@ -134,24 +134,24 @@
         { card: '🂾 ', point: 10, additionalpoint: 0 },
         { card: '🃎 ', point: 10, additionalpoint: 0 },
         { card: '🃞 ', point: 10, additionalpoint: 0 }];
-    function drawcards() {
+    function drawCards() {
         bet = Number(document.getElementById("bet").value);
         if (bet < 2 || bet > 500) {
-            document.getElementById("yourbet").innerHTML =
+            document.getElementById("yourBet").innerHTML =
                 (bet < 2) ? "Your bet is below the bet minimum. Please try again" : "Your bet is above the bet maximum. Please try again";
         } else {
-            document.getElementById("placebet").disabled = true;
-            placebet();
+            document.getElementById("placeBet").disabled = true;
+            placeBet();
         }
     }
 
-    function placebet() {
-        yourhand = [];
-        dealerhand = [];
-        dealerpoints = 0;
+    function placeBet() {
+        yourHand = [];
+        dealerHand = [];
+        dealerPoints = 0;
         bet = Number(document.getElementById("bet").value);
-        document.getElementById("placebet").disabled = true;
-        document.getElementById("yourbet").innerHTML = "Your bet: $" + bet;
+        document.getElementById("placeBet").disabled = true;
+        document.getElementById("yourBet").innerHTML = "Your bet: $" + bet;
         if (deck.length < 11) {
             deck = [
         { card: '🂡 ', point: 1, additionalpoint: 10 },
@@ -207,24 +207,24 @@
         { card: '🃎 ', point: 10, additionalpoint: 0 },
         { card: '🃞 ', point: 10, additionalpoint: 0 }];
         }
-        drawCard(yourhand);
-        drawCard(yourhand);
-        drawCard(dealerhand);
-        drawCard(dealerhand);
-        document.getElementById("yourhand").innerHTML = yourhand[0].card + yourhand[1].card;
-        document.getElementById("dealerhand").innerHTML = "🂠 " + dealerhand[0].card;
-        if (calculateTotalPoints(yourhand) == 21 && calculateTotalPoints(dealerhand) == 21) {
-            document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
+        drawCard(yourHand);
+        drawCard(yourHand);
+        drawCard(dealerHand);
+        drawCard(dealerHand);
+        document.getElementById("yourHand").innerHTML = yourHand[0].card + yourHand[1].card;
+        document.getElementById("dealerHand").innerHTML = "🂠 " + dealerHand[0].card;
+        if (calculateTotalPoints(yourHand) == 21 && calculateTotalPoints(dealerHand) == 21) {
+            document.getElementById('dealerHand').innerHTML = dealerHand[1].card + dealerHand[0].card;
             refresh('Draw!', true);
             return;
         }
-        if (calculateTotalPoints(yourhand) == 21) {
+        if (calculateTotalPoints(yourHand) == 21) {
             money += Math.round(bet * 1.5);
             refresh('You Win!', true);
             return;
         }
-        if (calculateTotalPoints(dealerhand) == 21) {
-            document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
+        if (calculateTotalPoints(dealerHand) == 21) {
+            document.getElementById('dealerHand').innerHTML = dealerHand[1].card + dealerHand[0].card;
             money -= bet;
             refresh('Dealer Wins!', true);
             return;
@@ -253,74 +253,72 @@
 
     function hit() {
         document.getElementById("double").disabled = true;
-        drawCard(yourhand);
-        document.getElementById('yourhand').innerHTML += yourhand[yourhand.length - 1].card;
-        if (calculateTotalPoints(yourhand) > 21) {
-            document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
+        drawCard(yourHand);
+        document.getElementById('yourHand').innerHTML += yourHand[yourHand.length - 1].card;
+        if (calculateTotalPoints(yourHand) > 21) {
+            document.getElementById('dealerHand').innerHTML = dealerHand[1].card + dealerHand[0].card;
             money -= bet;
             refresh('You Busted!', true);
         }
     }
 
-    function dealerhit() {
-        drawCard(dealerhand);
-        document.getElementById('dealerhand').innerHTML += dealerhand[dealerhand.length - 1].card;
-        dealerpoints = calculateTotalPoints(dealerhand);
-        if (dealerpoints > 21) {
+    function dealerHit() {
+        drawCard(dealerHand);
+        document.getElementById('dealerHand').innerHTML += dealerHand[dealerHand.length - 1].card;
+        dealerPoints = calculateTotalPoints(dealerHand);
+        if (dealerPoints > 21) {
             money += bet;
             refresh('Dealer Busted!', true);
             return;
         }
-        return dealerpoints;
+        return dealerPoints;
     }
     function stand() {
-        document.getElementById('dealerhand').innerHTML = dealerhand[1].card + dealerhand[0].card;
-        dealerpoints = calculateTotalPoints(dealerhand);
-        while (dealerpoints < 17) {
-            dealerhit();
-            dealerpoints = calculateTotalPoints(dealerhand);
+        document.getElementById('dealerHand').innerHTML = dealerHand[1].card + dealerHand[0].card;
+        dealerPoints = calculateTotalPoints(dealerHand);
+        while (dealerPoints < 17) {
+            dealerHit();
+            dealerPoints = calculateTotalPoints(dealerHand);
         }
-        if (dealerpoints > 21) {
+        if (dealerPoints > 21) {
             return;
         }
-        if (calculateTotalPoints(yourhand) > dealerpoints) {
+        if (calculateTotalPoints(yourHand) > dealerPoints) {
             money += bet;
             refresh('You Win!', true);
             return;
         }
-        if (calculateTotalPoints(yourhand) == dealerpoints) {
+        if (calculateTotalPoints(yourHand) == dealerPoints) {
             refresh('Draw!', true);
             return;
         }
 
-        if (calculateTotalPoints(yourhand) < dealerpoints) {
+        if (calculateTotalPoints(yourHand) < dealerPoints) {
             money -= bet;
             refresh('Dealer Wins!', true);
 
         }
     }
     function refresh(betResult, isFinished) {
-        document.getElementById('yourbet').innerHTML = betResult;
+        document.getElementById('yourBet').innerHTML = betResult;
         document.getElementById("money").innerHTML = money;
         document.getElementById("bet").value = "";
-        document.getElementById("placebet").disabled = !isFinished;
+        document.getElementById("placeBet").disabled = !isFinished;
         document.getElementById("hit").disabled = isFinished;
         document.getElementById("stand").disabled = isFinished;
         document.getElementById("double").disabled = isFinished;
-        if (isFinished) {
-           // yourhand = [];
-            //dealerhand = [];
-        }
     }
     function double() {
         bet = bet * 2;
         hit();
+        if (calculateTotalPoints(yourHand) < 21) {
         stand();
+        }
     }
     function drawCard(hand) {
-        let randomcard = Math.floor(Math.random() * deck.length);
-        hand.push(deck[randomcard]);
-        deck.splice(randomcard, 1);
+        let randomCard = Math.floor(Math.random() * deck.length);
+        hand.push(deck[randomCard]);
+        deck.splice(randomCard, 1);
     }
 </script>
 
