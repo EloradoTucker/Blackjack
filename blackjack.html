@@ -29,6 +29,9 @@
         font-size: 100px;
         margin: 0;
     }
+    #text {
+        font-size: 15px:
+    }
     
 </style>
 
@@ -50,13 +53,13 @@
     <div class="container">
         <div class="row">
             <div id="yourHand" class="column-sm">
-                <label>
+                <label id="text">
                    Your Hand:
                 </label>
                 <br>
             </div>
             <div id="dealerHand" class="column-sm">
-                <label>
+                <label id="text">
                    Dealer's Hand
                 </label> 
                 <br>
@@ -218,8 +221,10 @@
         drawCard(yourHand);
         drawCard(dealerHand);
         drawCard(dealerHand);
-        document.getElementById("yourHand").innerHTML = yourHand[0].card + yourHand[1].card;
-        document.getElementById("dealerHand").innerHTML = "🂠 " + dealerHand[0].card;
+        document.getElementById("yourHand").innerHTML = <label id="text">Your Hand:</label>
+        document.getElementById("dealerHand").innerHTML = <label id="text">Dealer Hand:</label>
+        document.getElementById("yourHand").innerHTML += yourHand[0].card + yourHand[1].card;
+        document.getElementById("dealerHand").innerHTML += "🂠 " + dealerHand[0].card;
         if (calculateTotalPoints(yourHand) == 21 && calculateTotalPoints(dealerHand) == 21) {
             document.getElementById('dealerHand').innerHTML = dealerHand[1].card + dealerHand[0].card;
             refresh('Draw!', true);
