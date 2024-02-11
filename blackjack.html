@@ -29,7 +29,7 @@
         font-size: 100px;
         margin: 0;
     }
-    #text {
+    label {
         font-size: 15px:
     }
     
@@ -221,8 +221,8 @@
         drawCard(yourHand);
         drawCard(dealerHand);
         drawCard(dealerHand);
-        document.getElementById("yourHand").innerHTML = <label id="text">Your Hand:</label>
-        document.getElementById("dealerHand").innerHTML = <label id="text">Dealer Hand:</label>
+        document.getElementById("yourHand").innerHTML = '<label id="text">Your Hand:</label>'
+        document.getElementById("dealerHand").innerHTML = '<label id="text">Dealer Hand:</label>'
         document.getElementById("yourHand").innerHTML += yourHand[0].card + yourHand[1].card;
         document.getElementById("dealerHand").innerHTML += "🂠 " + dealerHand[0].card;
         if (calculateTotalPoints(yourHand) == 21 && calculateTotalPoints(dealerHand) == 21) {
