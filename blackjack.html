@@ -22,20 +22,13 @@
 
     #yourHand {
         font-size: 100px;
-        position: relative;
-        right: 100px;
     }
 
     #dealerHand {
         font-size: 100px;
-        position: relative;
-        right: 100px;
     }
     #text {
         font-size: 15px;
-        position: relative;
-        bottom: 100px;
-        
     }
     
 </style>
@@ -57,20 +50,22 @@
     <p id="yourBet"></p>
     
     <div>
-        <div class="row">
-            <div id="yourHand" class="column-sm">
+        <div class="row col-12-xs">
+            
+            <div class="col-6">
                 <label id="text">
                    Your Hand:
                 </label>
-                <br>
             </div>
-            <div> ㅤㅤㅤㅤㅤㅤㅤㅤ </div>
-            <div id="dealerHand" class="column-sm">
+        
+            <div class="col-6">
                 <label id="text">
                    Dealer's Hand
                 </label> 
-                <br>
             </div>
+            
+            <div id="yourHand" class="col-6"></div>
+            <div id="dealerHand" class="col-6"></div>
         </div>
     </div>
     
