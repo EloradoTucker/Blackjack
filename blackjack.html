@@ -2,18 +2,22 @@
 <html>
 <header>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </header>
 <style>
     .container {
         margin: 10px !important;
     }
+
     h1 {
         font-size: 40px;
     }
+
     body {
         background-color: lightgreen;
     }
+
     #bet {
         background-color: green;
         color: yellow;
@@ -30,58 +34,58 @@
     #dealerHand {
         font-size: 100px;
     }
+
     #text {
         font-size: 15px;
     }
-    
 </style>
 
 <body>
     <div class="container">
-    <h1>
-        Blackjack
-    </h1>
-    <p>
-        You have $<span id="money"></span>. Bet min: $2 Bet max: $500
-    </p>
-    <label> How much would you like to bet? <br> $
-        <input type="number" id="bet" />
-    </label>
-    <button id="placeBet">
-        Place Bet
-    </button>
-    <p id="yourBet"></p>
-    
-    <div>
-        <div class="row col-12-xs">
-            
-            <div class="col-6">
-                <label id="text">
-                   Your Hand:
-                </label>
+        <h1>
+            Blackjack
+        </h1>
+        <p>
+            You have $<span id="money"></span>. Bet min: $2 Bet max: $500
+        </p>
+        <label> How much would you like to bet? <br> $
+            <input type="number" id="bet" />
+        </label>
+        <button id="placeBet">
+            Place Bet
+        </button>
+        <p id="yourBet"></p>
+
+        <div>
+            <div class="row col-12-xs">
+
+                <div class="col-4-md col-6-xs">
+                    <label id="text">
+                        Your Hand:
+                    </label>
+                </div>
+
+                <div class="col-4-md col-6-xs">
+                    <label id="text">
+                        Dealer's Hand:
+                    </label>
+                </div>
+
+                <div id="yourHand" class="col-6"></div>
+                <div id="dealerHand" class="col-6"></div>
             </div>
-        
-            <div class="col-6">
-                <label id="text">
-                   Dealer's Hand:
-                </label> 
-            </div>
-            
-            <div id="yourHand" class="col-6"></div>
-            <div id="dealerHand" class="col-6"></div>
         </div>
-    </div>
-    
-    <br>
-    <button id="hit" onClick="hit();">
-        Hit
-    </button>
-    <button id="stand" onClick="stand()">
-        Stand
-    </button>
-    <button id="double" onClick="double()">
-        Double Down
-    </button>
+
+        <br>
+        <button id="hit" onClick="hit();">
+            Hit
+        </button>
+        <button id="stand" onClick="stand()">
+            Stand
+        </button>
+        <button id="double" onClick="double()">
+            Double Down
+        </button>
     </div>
 </body>
 
@@ -170,58 +174,58 @@
         document.getElementById("yourBet").innerHTML = "Your bet: $" + bet;
         if (deck.length < 11) {
             deck = [
-        { card: '🂡 ', point: 1, additionalpoint: 10 },
-        { card: '🃑 ', point: 1, additionalpoint: 10 },
-        { card: '🂱 ', point: 1, additionalpoint: 10 },
-        { card: '🃁 ', point: 1, additionalpoint: 10 },
-        { card: '🂢 ', point: 2, additionalpoint: 0 },
-        { card: '🂲 ', point: 2, additionalpoint: 0 },
-        { card: '🃂 ', point: 2, additionalpoint: 0 },
-        { card: '🃒 ', point: 2, additionalpoint: 0 },
-        { card: '🂣 ', point: 3, additionalpoint: 0 },
-        { card: '🂳 ', point: 3, additionalpoint: 0 },
-        { card: '🃃 ', point: 3, additionalpoint: 0 },
-        { card: '🃓 ', point: 3, additionalpoint: 0 },
-        { card: '🂤 ', point: 4, additionalpoint: 0 },
-        { card: '🂴 ', point: 4, additionalpoint: 0 },
-        { card: '🃄 ', point: 4, additionalpoint: 0 },
-        { card: '🃔 ', point: 4, additionalpoint: 0 },
-        { card: '🂥 ', point: 5, additionalpoint: 0 },
-        { card: '🂵 ', point: 5, additionalpoint: 0 },
-        { card: '🃅 ', point: 5, additionalpoint: 0 },
-        { card: '🃕 ', point: 5, additionalpoint: 0 },
-        { card: '🂦 ', point: 6, additionalpoint: 0 },
-        { card: '🂶 ', point: 6, additionalpoint: 0 },
-        { card: '🃆 ', point: 6, additionalpoint: 0 },
-        { card: '🃖 ', point: 6, additionalpoint: 0 },
-        { card: '🂧 ', point: 7, additionalpoint: 0 },
-        { card: '🂷 ', point: 7, additionalpoint: 0 },
-        { card: '🃇 ', point: 7, additionalpoint: 0 },
-        { card: '🃗 ', point: 7, additionalpoint: 0 },
-        { card: '🂨 ', point: 8, additionalpoint: 0 },
-        { card: '🂸 ', point: 8, additionalpoint: 0 },
-        { card: '🃈 ', point: 8, additionalpoint: 0 },
-        { card: '🃘 ', point: 8, additionalpoint: 0 },
-        { card: '🂩 ', point: 9, additionalpoint: 0 },
-        { card: '🂹 ', point: 9, additionalpoint: 0 },
-        { card: '🃉 ', point: 9, additionalpoint: 0 },
-        { card: '🃙 ', point: 9, additionalpoint: 0 },
-        { card: '🂪 ', point: 10, additionalpoint: 0 },
-        { card: '🂺 ', point: 10, additionalpoint: 0 },
-        { card: '🃊 ', point: 10, additionalpoint: 0 },
-        { card: '🃚 ', point: 10, additionalpoint: 0 },
-        { card: '🂫 ', point: 10, additionalpoint: 0 },
-        { card: '🂻 ', point: 10, additionalpoint: 0 },
-        { card: '🃋 ', point: 10, additionalpoint: 0 },
-        { card: '🃛 ', point: 10, additionalpoint: 0 },
-        { card: '🂭 ', point: 10, additionalpoint: 0 },
-        { card: '🂽 ', point: 10, additionalpoint: 0 },
-        { card: '🃍 ', point: 10, additionalpoint: 0 },
-        { card: '🃝 ', point: 10, additionalpoint: 0 },
-        { card: '🂮 ', point: 10, additionalpoint: 0 },
-        { card: '🂾 ', point: 10, additionalpoint: 0 },
-        { card: '🃎 ', point: 10, additionalpoint: 0 },
-        { card: '🃞 ', point: 10, additionalpoint: 0 }];
+                { card: '🂡 ', point: 1, additionalpoint: 10 },
+                { card: '🃑 ', point: 1, additionalpoint: 10 },
+                { card: '🂱 ', point: 1, additionalpoint: 10 },
+                { card: '🃁 ', point: 1, additionalpoint: 10 },
+                { card: '🂢 ', point: 2, additionalpoint: 0 },
+                { card: '🂲 ', point: 2, additionalpoint: 0 },
+                { card: '🃂 ', point: 2, additionalpoint: 0 },
+                { card: '🃒 ', point: 2, additionalpoint: 0 },
+                { card: '🂣 ', point: 3, additionalpoint: 0 },
+                { card: '🂳 ', point: 3, additionalpoint: 0 },
+                { card: '🃃 ', point: 3, additionalpoint: 0 },
+                { card: '🃓 ', point: 3, additionalpoint: 0 },
+                { card: '🂤 ', point: 4, additionalpoint: 0 },
+                { card: '🂴 ', point: 4, additionalpoint: 0 },
+                { card: '🃄 ', point: 4, additionalpoint: 0 },
+                { card: '🃔 ', point: 4, additionalpoint: 0 },
+                { card: '🂥 ', point: 5, additionalpoint: 0 },
+                { card: '🂵 ', point: 5, additionalpoint: 0 },
+                { card: '🃅 ', point: 5, additionalpoint: 0 },
+                { card: '🃕 ', point: 5, additionalpoint: 0 },
+                { card: '🂦 ', point: 6, additionalpoint: 0 },
+                { card: '🂶 ', point: 6, additionalpoint: 0 },
+                { card: '🃆 ', point: 6, additionalpoint: 0 },
+                { card: '🃖 ', point: 6, additionalpoint: 0 },
+                { card: '🂧 ', point: 7, additionalpoint: 0 },
+                { card: '🂷 ', point: 7, additionalpoint: 0 },
+                { card: '🃇 ', point: 7, additionalpoint: 0 },
+                { card: '🃗 ', point: 7, additionalpoint: 0 },
+                { card: '🂨 ', point: 8, additionalpoint: 0 },
+                { card: '🂸 ', point: 8, additionalpoint: 0 },
+                { card: '🃈 ', point: 8, additionalpoint: 0 },
+                { card: '🃘 ', point: 8, additionalpoint: 0 },
+                { card: '🂩 ', point: 9, additionalpoint: 0 },
+                { card: '🂹 ', point: 9, additionalpoint: 0 },
+                { card: '🃉 ', point: 9, additionalpoint: 0 },
+                { card: '🃙 ', point: 9, additionalpoint: 0 },
+                { card: '🂪 ', point: 10, additionalpoint: 0 },
+                { card: '🂺 ', point: 10, additionalpoint: 0 },
+                { card: '🃊 ', point: 10, additionalpoint: 0 },
+                { card: '🃚 ', point: 10, additionalpoint: 0 },
+                { card: '🂫 ', point: 10, additionalpoint: 0 },
+                { card: '🂻 ', point: 10, additionalpoint: 0 },
+                { card: '🃋 ', point: 10, additionalpoint: 0 },
+                { card: '🃛 ', point: 10, additionalpoint: 0 },
+                { card: '🂭 ', point: 10, additionalpoint: 0 },
+                { card: '🂽 ', point: 10, additionalpoint: 0 },
+                { card: '🃍 ', point: 10, additionalpoint: 0 },
+                { card: '🃝 ', point: 10, additionalpoint: 0 },
+                { card: '🂮 ', point: 10, additionalpoint: 0 },
+                { card: '🂾 ', point: 10, additionalpoint: 0 },
+                { card: '🃎 ', point: 10, additionalpoint: 0 },
+                { card: '🃞 ', point: 10, additionalpoint: 0 }];
         }
         drawCard(yourHand);
         drawCard(yourHand);
@@ -328,7 +332,7 @@
         bet = bet * 2;
         hit();
         if (calculateTotalPoints(yourHand) < 21) {
-        stand();
+            stand();
         }
     }
     function drawCard(hand) {
