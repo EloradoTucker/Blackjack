@@ -9,29 +9,29 @@
 
 <body>
     <h1>Chair Calculator</h1>
-    <label >Select a type of chair:</label> <br>
+    <label>Select a type of chair:</label> <br>
     <select name="chairs" id="chairs">
         <option value=366>Caper Stacking Chair by Herman Miller ($366/chair)</option>
         <option value=100>test</option>
     </select>
     <p>Input an amount of money:</p>
-    <label>$</label><input type="number" id="money"> <br>
+    <label>$</label><input type="number" id="money"> <br> <br>
     <button onClick="calculate()">Calculate!</button>
     <p id="numChairs"></p>
 
 </body>
 
 <script>
-let chair;
-let money;
-let chairNum;
-function calculate() {
-    chairNum == 0;
-    chair == document.getElementById("chairs").value;
-    money == document.getElementById("money").value;
-    chairNum == money / chair;
-    document.getElementById("numChairs") == 'You can buy ' + chairNum + ' chairs!';
-}
+    let chair;
+    let money;
+    let chairNum;
+    function calculate() {
+        chairNum = 0;
+        chair = document.getElementById("chairs").value;
+        money = document.getElementById("money").value;
+        chairNum = money / chair;
+        document.getElementById("numChairs") = 'You can buy ' + chairNum + ' chairs!';
+    }
 </script>
 
 </html>
