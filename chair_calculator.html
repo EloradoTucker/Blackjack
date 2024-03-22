@@ -29,7 +29,7 @@ function calculate() {
     chairNum = 0;
     chair = document.getElementById("chairs").value;
     money = document.getElementById("money").value;
-    chairNum = money / chair;
+    chairNum = Math.round((money / chair + Number.EPSILON) * 100) / 100;
     document.getElementById("numChairs").innerHTML = 'You can buy ' + chairNum + ' chairs!';
 }
 </script>
