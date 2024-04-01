@@ -10,55 +10,56 @@
 
 <body>
     <h1>Metronome</h1>
-   <label>BPM:</label> <br>
-   <p id="displayBPM"></p>
-   <button onClick="add1BPM()">+1</button>
-   <button onClick="add10BPM()">+10</button>
-   <input type="range" min="1" max="500" value="120" class="slider" id="BPM">
-   <button onClick="sub1BPM()">-1</button>
-   <button onClick="sub10BPM()">-10</button> <br> <br>
-   <button onclick="startMetronome()">Start</button>
-   <button onclick="stopMetronome()">Stop</button>
+    <label>BPM:</label> <br>
+    <p id="displayBPM"></p>
+    <button onClick="add1BPM()">+1</button>
+    <button onClick="add10BPM()">+10</button>
+    <input type="range" min="1" max="500" value="120" class="slider" id="BPM" onInput="updateBPM">
+    <button onClick="sub1BPM()">-1</button>
+    <button onClick="sub10BPM()">-10</button> <br> <br>
+    <button onclick="startMetronome()">Start</button>
+    <button onclick="stopMetronome()">Stop</button>
 </body>
 
 <script>
-var slider = document.getElementById('BPM');
-let interval;
-document.getElementById('displayBPM').innerHTML = slider.value;
-slider.oninput = function() {
+    var slider = document.getElementById('BPM');
+    let interval;
+    let intervalTime = 60000 / slider.value;
     document.getElementById('displayBPM').innerHTML = slider.value;
-}
-function add1BPM() {
-    slider.value = +slider.value + 1 ;
-    document.getElementById('displayBPM').innerHTML = slider.value;
-}
-function add10BPM() {
-    slider.value = +slider.value + 10;
-    document.getElementById('displayBPM').innerHTML = slider.value;
-}
-function sub1BPM() {
-    slider.value -= 1;
-    document.getElementById('displayBPM').innerHTML = slider.value;
-}
-function sub10BPM() {
-    slider.value -= 10;
-    document.getElementById('displayBPM').innerHTML = slider.value;
-}
+    slider.oninput = function () {
+        document.getElementById('displayBPM').innerHTML = slider.value;
+    }
+    function add1BPM() {
+        slider.value = +slider.value + 1;
+        document.getElementById('displayBPM').innerHTML = slider.value;
+    }
+    function add10BPM() {
+        slider.value = +slider.value + 10;
+        document.getElementById('displayBPM').innerHTML = slider.value;
+    }
+    function sub1BPM() {
+        slider.value -= 1;
+        document.getElementById('displayBPM').innerHTML = slider.value;
+    }
+    function sub10BPM() {
+        slider.value -= 10;
+        document.getElementById('displayBPM').innerHTML = slider.value;
+    }
 
-function startMetronome() {
-    const intervalTime = 60000 / slider.value; 
-    interval = setInterval(tick, intervalTime);
-  }
+    function startMetronome() {
+        clearInterval(interval);
+        intervalTime = 60000 / slider.value;
+        interval = setInterval(tick, intervalTime);
+    }
 
-  function stopMetronome() {
-    clearInterval(interval);
-  }
+    function stopMetronome() {
+        clearInterval(interval);
+    }
 
-  function tick() {
-    const audio = new Audio('tick.mp3');
-    audio.play();
-  }
-
+    function tick() {
+        const audio = new Audio('tick.mp3');
+        audio.play();
+    }
 
 </script>
 
