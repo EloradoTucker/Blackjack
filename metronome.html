@@ -18,13 +18,35 @@
     <button onClick="sub1BPM()">-1</button>
     <button onClick="sub10BPM()">-10</button> <br> <br>
     <button onclick="startMetronome()">Start</button>
-    <button onclick="stopMetronome()">Stop</button>
+    <button onclick="stopMetronome()">Stop</button> <br> <br>
+    <p>Select a time signature:</p>
+    <select name="time" id="time">
+        <option value="4">4/4</option>
+        <option value="3">3/4</option>
+        <option value="6">6/8</option>
+        <option value="3">3/8</option>
+    </select>
+    <br> <br>
+    <p>Mute random bars:</p>
+    <input type="radio" name="mute" id="0" value="0">
+    <label for="none">Off</label>
+    <input type="radio" name="mute" id="10" value="10">
+    <label for="10">10%</label>
+    <input type="radio" name="mute" id="20" value="20">
+    <label for="20">20%</label>
+    <input type="radio" name="mute" id="30" value="30">
+    <label for="30">30%</label>
+    <input type="radio" name="mute" id="40" value="40">
+    <label for="40">40%</label>
+
 </body>
 
 <script>
+    document.getElementById('0').checked = true;
     var slider = document.getElementById('BPM');
     let interval;
     let intervalTime = 60000 / slider.value;
+    let randomMute;
     document.getElementById('displayBPM').innerHTML = slider.value;
     slider.oninput = function () {
         document.getElementById('displayBPM').innerHTML = slider.value;
@@ -59,8 +81,17 @@
     function tick() {
         const audio = new Audio('tick.mp3');
         audio.play();
+        for (;;) {
+            randomMute = setInterval(mute, slider.value / 60000 * time.value);
+        }
     }
-
+    function mute() {
+        if (Math.floor(Math.random() * mute.value) = 0) {
+            stopMetronome();
+            setTimeout(startMetronome, slider.value / 60000 * time.value);
+            return;
+        }
+    }
 </script>
 
 </html>
