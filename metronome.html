@@ -28,15 +28,15 @@
     </select>
     <br> <br>
     <p>Mute random bars:</p>
-    <input type="radio" name="mute" id="0" value="0">
+    <input type="radio" class="mute" id="0" value="0">
     <label for="none">Off</label>
-    <input type="radio" name="mute" id="10" value="10">
+    <input type="radio" class="mute" id="10" value="10">
     <label for="10">10%</label>
-    <input type="radio" name="mute" id="20" value="20">
+    <input type="radio" class="mute" id="20" value="20">
     <label for="20">20%</label>
-    <input type="radio" name="mute" id="30" value="30">
+    <input type="radio" class="mute" id="30" value="30">
     <label for="30">30%</label>
-    <input type="radio" name="mute" id="40" value="40">
+    <input type="radio" class="mute" id="40" value="40">
     <label for="40">40%</label>
 
 </body>
@@ -82,10 +82,10 @@
         const audio = new Audio('tick.mp3');
         audio.play();
         for (;;) {
-            randomMute = setInterval(mute, slider.value / 60000 * time.value);
+            randomMute = setInterval(muted, slider.value / 60000 * time.value);
         }
     }
-    function mute() {
+    function muted() {
         if (Math.floor(Math.random() * mute.value) = 0) {
             stopMetronome();
             setTimeout(startMetronome, slider.value / 60000 * time.value);
