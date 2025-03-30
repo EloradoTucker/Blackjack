@@ -81,7 +81,7 @@
     function tick() {
         const audio = new Audio('tick.mp3');
         audio.play();
-        for (;;) {
+        while (setInterval(tick, intervalTime)) {
             randomMute = setInterval(mute, slider.value / 60000 * time.value);
         }
     }
