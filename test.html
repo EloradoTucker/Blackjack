@@ -4,16 +4,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </header>
 <style>
-body {
-    background-color: lightgreen;
-}
-
+    body {
+        background-color: lightgreen;
+    }
 </style>
 
 <body>
     <h1>test</h1>
-<button onClick="roll()">hi!</button>
+    <button onClick="roll()">hi!</button>
+    <p>
+            Number is: <span id="rolledNumber"></span>
+        </p>
 </body>
 <script>
-roll()
+    let money = 1000;
+    let rolledNumber;
+    document.getElementById("rolledNumber").innerHTML = rolledNumber;
+    function roll() {
+        let rolledNumber = Math.floor(Math.random() * 30);
+    }
 </script>
