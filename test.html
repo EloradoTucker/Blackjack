@@ -28,15 +28,15 @@
         document.getElementById("rolledNumber").innerHTML = rolledNumber;
         const rand = Math.random();
         if (rand < 0.4) {
-            colour = 'Red';
+            let colour = 'Red';
             return;
         }
         else if (rand < 0.8) {
-            colour = 'Black';
+            let colour = 'Black';
             return;
         }
         else {
-            colour = 'Green';
+            let colour = 'Green';
             return;
         }
         document.getElementById("colour").innerHTML = colour;
