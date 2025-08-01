@@ -16,7 +16,7 @@
     <p>
         Number is: <span id="rolledNumber"></span>
     </p>
-    <p>Colour is:</p>
+    <p>Colour is:<span id="colour"></span></p>
 </body>
 <script>
     let money = 1000;
@@ -26,8 +26,6 @@
     function roll() {
         let rolledNumber = Math.floor(Math.random() * 30);
         document.getElementById("rolledNumber").innerHTML = rolledNumber;
-    }
-    function rollColour() {
         const rand = Math.random();
         if (rand < 0.4) {
             colour = 'Red';
@@ -41,6 +39,8 @@
             colour = 'Green';
             return;
         }
+        document.getElementById("colour").innerHTML = colour;
     }
+
 
 </script>
