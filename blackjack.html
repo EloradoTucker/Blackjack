@@ -154,11 +154,15 @@
         { card: '🂾 ', point: 10, additionalpoint: 0 },
         { card: '🃎 ', point: 10, additionalpoint: 0 },
         { card: '🃞 ', point: 10, additionalpoint: 0 }];
+    function isValidMoneyAmount(value) {
+        return /^-?\d+(\.\d{1,2})?$/.test(value.toString());
+    }
+
     function drawCards() {
         bet = Number(document.getElementById("bet").value);
-        if (bet < 2 || bet > 500) {
+        if (bet < 2 || bet > 500 || isValidMoneyAmount(bet) == false) {
             document.getElementById("yourBet").innerHTML =
-                (bet < 2) ? "Your bet is below the bet minimum. Please try again" : "Your bet is above the bet maximum. Please try again";
+                (bet < 2) ? "Your bet is below the bet minimum. Please try again" : (bet > 500) ? "Your bet is above the bet maximum. Please try again" : "Your bet is invalid. Please try again";
         } else {
             document.getElementById("placeBet").disabled = true;
             placeBet();
