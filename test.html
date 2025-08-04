@@ -27,13 +27,13 @@
         let rolledNumber = Math.floor(Math.random() * 37);
         document.getElementById("rolledNumber").innerHTML = rolledNumber;
         const rng = Math.random();
-        if (rng < 0.4865) {
+        if (rng < 0.5) {
             colour = "Red";
         }
-        else if (rng < 0.9730) {
+        else if (rng < 0.5) {
             colour = "Black";
         }
-        else {
+        if (rolledNumber == 0) {
             colour = "Green";
         }
         document.getElementById("colour").innerHTML = colour;
