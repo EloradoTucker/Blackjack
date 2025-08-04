@@ -28,12 +28,8 @@
     document.getElementById("money").innerHTML = money;
 
     function roll() {
-        if (bet > 0) {
-
-        }
-        else {
+        if (bet < 0) {
             document.getElementById("status").innerHTML = "Bet invalid. Try again."
-            return;
         }
         let rolledNumber = Math.floor(Math.random() * 37);
         document.getElementById("rolledNumber").innerHTML = rolledNumber;
