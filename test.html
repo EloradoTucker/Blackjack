@@ -28,7 +28,7 @@
     document.getElementById("money").innerHTML = money;
 
     function roll() {
-        if (bet < 0) {
+        if (bet <= 0) {
             document.getElementById("status").innerHTML = "Bet invalid. Try again."
         }
         let rolledNumber = Math.floor(Math.random() * 37);
