@@ -39,7 +39,7 @@
     function roll() {
         bet = Number(document.getElementById("bet").value)
         betColour = document.getElementById("betColour").value;
-        if ((bet <= 0) || (bet > money) || (betColour = 0)) {
+        if ((bet <= 0) || (bet > 1000) || (betColour = 0)) {
             document.getElementById("status").innerHTML = "Bet invalid. Try again."
             return;
         }
