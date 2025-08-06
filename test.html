@@ -20,8 +20,7 @@
         <option value="0">Choose and option</option>
         <option value="Red">Red</option>
         <option value="Black">Black</option>
-        <option value="Green">Green
-        <option>
+        <option value="Green">Green</option>
     </select>
     <br>
     <button onClick="roll()">Roll!</button>
@@ -39,7 +38,7 @@
     //The pockets of the roulette wheel are numbered from 0 to 36. In number ranges from 1 to 10 and 19 to 28, odd numbers are red and even are black. In ranges from 11 to 18 and 29 to 36, odd numbers are black and even are red.
     function roll() {
         bet = Number(document.getElementById("bet").value)
-        betColour= document.getElementById("betColour").value;
+        betColour = document.getElementById("betColour").value;
         if ((bet <= 0) || (betColour = 0)) {
             document.getElementById("status").innerHTML = "Bet invalid. Try again."
             return;
@@ -70,17 +69,17 @@
         checkWin()
     }
     function checkWin() {
-if (betColour = colour) {
-    money += bet;
-    refresh("You win!", true);
-}
-else {
-    money -= bet;
-    refresh("You lose", true);
-}
+        if (betColour = colour) {
+            money += bet;
+            refresh("You win!");
+        }
+        else {
+            money -= bet;
+            refresh("You lose");
+        }
 
     }
-    function refresh(betResult, isFinished) {
+    function refresh(betResult) {
         document.getElementById('status').innerHTML = betResult;
         document.getElementById("money").innerHTML = money;
         document.getElementById("bet").value = "";
