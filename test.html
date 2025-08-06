@@ -74,9 +74,12 @@
             money += bet;
             refresh("You win!");
         }
-        else {
+        else if (betColour !== colour) {
             money -= bet;
             refresh("You lose");
+        }
+        else {
+            console.log("ERROR!!!!!")
         }
 
     }
