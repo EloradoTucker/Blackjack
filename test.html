@@ -26,20 +26,30 @@
     let rolledNumber;
     let colour;
     document.getElementById("money").innerHTML = money;
-//The pockets of the roulette wheel are numbered from 0 to 36. In number ranges from 1 to 10 and 19 to 28, odd numbers are red and even are black. In ranges from 11 to 18 and 29 to 36, odd numbers are black and even are red.
+    //The pockets of the roulette wheel are numbered from 0 to 36. In number ranges from 1 to 10 and 19 to 28, odd numbers are red and even are black. In ranges from 11 to 18 and 29 to 36, odd numbers are black and even are red.
     function roll() {
         if (bet <= 0) {
             document.getElementById("status").innerHTML = "Bet invalid. Try again."
             return;
         }
-        let rolledNumber = Math.floor(Math.random() * 37);
+        let rolledNumber = Math.floor(Math.random() * 36);
         document.getElementById("rolledNumber").innerHTML = rolledNumber;
-        const rng = Math.random();
-        if (rng < 0.5) {
-            colour = "Red";
+        if ((rolledNumber >= 1 && number <= 10) || (number >= 19 && number <= 28)) {
+            if (rolledNumber % 2 === 0) {
+                colour = "Black"
+            }
+            else {
+                colour = "Red"
+            }
         }
+
         else {
-            colour = "Black";
+            if (rolledNumber % 2 !== 0) {
+                colour = "Black"
+            }
+            else {
+                colour = "Red"
+            }
         }
         if (rolledNumber == 0) {
             colour = "Green";
