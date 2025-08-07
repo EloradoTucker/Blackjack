@@ -19,12 +19,12 @@
     <label>Which one?</label>
     <select name="betColour" id="betColour">
         <option value=0>Choose an option</option>
-        <option value="Red">Red</option>
-        <option value="Black">Black</option>
-        <option value="Green">Green</option>
+        <option value="Red">Red (1-1)</option>
+        <option value="Black">Black (1-1)</option>
+        <option value="Green">Green (35-1)</option>
     </select>
     <br>
-    <button onClick="roll()">Roll!</button>
+    <button onClick="placeBet()">Roll!</button>
     <p>
         Number is: <span id="rolledNumber"></span>
     </p>
@@ -37,13 +37,16 @@
     let betColour;
     document.getElementById("money").innerHTML = money;
     //The pockets of the roulette wheel are numbered from 0 to 36. In number ranges from 1 to 10 and 19 to 28, odd numbers are red and even are black. In ranges from 11 to 18 and 29 to 36, odd numbers are black and even are red.
-    function roll() {
+    function placeBet() {
         bet = Number(document.getElementById("bet").value)
         betColour = document.getElementById("betColour").value;
         if ((bet <= 0) || (bet > 1000) || (betColour == 0)) {
             document.getElementById("status").innerHTML = "Bet invalid. Try again."
             return;
         }
+        roll();
+    }
+    function roll() {
         let rolledNumber = Math.floor(Math.random() * 36);
         document.getElementById("rolledNumber").innerHTML = rolledNumber;
         if ((rolledNumber >= 1 && rolledNumber <= 10) || (rolledNumber >= 19 && rolledNumber <= 28)) {
@@ -71,6 +74,9 @@
     }
     function checkWin() {
         if (betColour === colour) {
+            if (colour === "Green") {
+                bet *= 35;
+            }
             money += bet;
             refresh("You win!");
         }
@@ -78,7 +84,7 @@
             money -= bet;
             refresh("You lose");
         }
-       
+
     }
     function refresh(betResult) {
         document.getElementById('status').innerHTML = betResult;
