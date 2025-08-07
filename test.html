@@ -12,7 +12,7 @@
 <body>
     <h1>Roulette</h1>
     <p>You have: $<span id="money"></span></p>
-    <label>How much? Bet min is $1, bet max is $1000</label>
+    <label>How much? Bet min is $1, bet max is $10000</label>
     <br>
     <input type="number" id="bet"></p>
     <p id="status"></p>
@@ -40,8 +40,11 @@
     function placeBet() {
         bet = Number(document.getElementById("bet").value)
         betColour = document.getElementById("betColour").value;
-        if ((bet <= 0) || (bet > 1000) || (betColour == 0)) {
+        if ((bet <= 0) || (bet > 10000) || (bet > money) || (betColour == 0)) {
             document.getElementById("status").innerHTML = "Bet invalid. Try again."
+            if (bet > money) {
+                document.getElementById("status").innerHTML = "You don't have enough money."
+            }
             return;
         }
         roll();
